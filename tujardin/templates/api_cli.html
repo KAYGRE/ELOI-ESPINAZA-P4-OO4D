@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api cliente</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'estiloscss/estilos.css' %}">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+   
+
+  </head>
+  <body style="background-color: aqua;">
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'img/arbol.ico' %}" width="30" height="30" alt="" href="{% url 'index' %}">
+      </a>
+  
+      
+  
+      <a style=" text-align: center;color:aliceblue;" href="{% url 'index' %}">TuJardin</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <script src="{% static 'js/script.js' %}"></script>
+          <li class="nav-item">
+            {% if user.is_authenticated %}
+
+            <a href="#">Bienvenid@ {{user.username}}</a></li>
+            <li class="nav-item">
+            <a href="{% url 'logout' %}" class="btn btn-outline-danger my-2 my-sm-0">Cerrar Sesión</a></li>
+        {% else %}
+            <li class="nav-item">
+            <a href="{% url 'login' %}" class="btn btn-outline-danger my-2 my-sm-0">Iniciar Sesión</a>
+        {% endif %}    </li>
+          <li class="nav-item " >
+            <a class="nav-link" href="{% url 'empresa' %}">Quiénes somos</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link" href="{% url 'products' %}">Productos</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link" href="{% url 'api' %}">Api</a>
+          </li>
+  
+             
+  
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search" style="border-radius: 15px; ">
+          <button class="btn btn-dark:hover my-2 my-sm-0" type="submit" style="background: rgb(0, 0, 0);border: none;color:rgb(255, 255, 255)">Buscar</button>
+        </form>
+      </div>
+    </nav>
+    <br>
+    <div class="row jumbotron"  style="background-color: #ABBD63;">
+     
+
+          <img src="{% static 'img/perfil2.png' %}" alt="api_cli" class="img-fluid" width="200px" height="200px">
+      
+    
+    
+    <div class="table-responsive-md">
+    <div class="container">
+      <h2>Mostrando Clientes</h2>
+
+      <table class="table">
+          <thead>
+              <tr>
+                  <th>ID-Cliente </th>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                  <th>Modificar</th>
+                  <th>Eliminar</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for cl in cliente %}
+              <tr>
+                  <td>{{cl.idcli}}</td>
+                  <td>{{cl.nom}} </td>
+                  <td>{{cl.email}}</td>
+
+                  {% if user.is_authenticated %}
+                      <td><a href="{% url 'api_cli_modificar' cl.idcli %}" class="btn btn-primary">Modificar</a> </td>
+                      <td><a href="{% url 'api_cli_borrar' cl.idcli %}" class="btn btn-danger">Eliminar</a></td>
+                  {% else %}
+                      <td><a href="#">No tiene permisos para modificar</a></td>
+                      <td><a href="#" style="color:red;">No tiene permisos para eliminar </a></td>
+                  {% endif %}
+
+              </tr>
+              {% endfor %}
+
+          </tbody>
+      </table>
+
+      {% if user.is_authenticated %}
+          <a href="{% url 'api_cli_crear' %}" class="btn btn-primary">Crear Clientes</a> 
+      {% endif %}
+          <a href="{% url 'index' %}" class="btn btn-success">Volver al index</a>
+      
+
+  </div></div>
+    <br>
+</div></div>
+<footer class="bg-transparent text-center text-lg-start">
+        <div class="container p-4">
+            <div class="row">
+            <div class="col-lg-6 col-md-12 mb-4 mb-md-0" style="text-align: center;padding-left: 5%">
+                <img src="{% static 'img/arbol.ico' %}" alt="" style="width: 20%;">
+            </div>
+            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+              
+                <div style="text-align: center;">
+                    <ul style="list-style:none; text-align: center;padding-left: 0%;">
+                        <li>
+                            <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'">Trabaja con nosotros</small>
+                        </li>
+                        <li>
+                            <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'">Términos y condiciones</small>
+                        </li>
+                        <li>
+                            <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'">Servicio al cliente</small>
+                        </li>
+                        <li> <td><img src="{% static 'img/instagram.svg' %}" onclick="location.href='https://www.instagram.com/'"></td>
+                          <td><img src="{% static 'img/facebook.svg' %}" onclick="location.href='https://www.facebook.com/'"></td>
+                          <td><img src="{% static 'img/twitter.svg' %}" onclick="location.href='https://www.twitter.com/'"></td></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgb(10, 253, 127);">
+            © 2022 Copyright: Eloi Espinaza
+            <a class="text-dark" href="{% url 'index' %}">TuJardin.cl</a>
+            </div>
+    </footer>
+    
+</body>
+</html>

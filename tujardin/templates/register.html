@@ -1,0 +1,213 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    {% load static %}
+
+    <link href="{% static 'estilos/bootstrap.min.css' %}" type="text/css" rel="stylesheet"> 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+    
+    
+    <script>
+      function CambiaColor(a)
+      {
+          a.style.background = "#E9967A";
+      }
+  
+      function CambiarMayuscula()
+      {
+          var a = document.getElementById('ema');
+          a.value = a.value.toUpperCase();
+      }
+  </script>
+
+<script>
+
+  $(function() 
+  {
+    $("#reg").validate({
+         rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: "required",
+                fono: "required",
+                fecha: "required",
+                password2: {
+                    required: true,
+                    equalTo: "#password"
+                }   
+                
+            }, //rules
+        messages: {
+            email: {
+                required: 'Ingresa tu correo electrónico',
+                email: 'Formato de correo no válido'
+            },
+            nombre:{
+                required: 'Ingrese un nombre'
+            },
+            segnom:{
+                required: 'Ingrese un apellido'
+            },
+            edad:{
+                required: 'Ingrese una edad'
+            },
+            password: {
+                required: 'Ingresa una contraseña',
+                minlength: 'Caracteres insuficientes'
+            },
+            fono:{
+                required: 'Ingrese un número de celular',
+                minlength: 'Cantidad de digitos insuficiente'
+            },
+            fecha:{
+                required: 'Seleccione una fecha válida',
+                min: 'Fecha no corresponde'
+            },
+            password2: {
+                required: 'Reingresa la contraseña',
+                equalTo: 'Las contraseñas ingresadas no coinciden',
+                minlength: 'Caracteres insuficientes'
+
+            }
+        }//messages
+    }); //$('#mi-formulario').validate
+}); //function
+
+
+</script>
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'estilos/estilos.css' %}" >
+    <link rel="shortcut icon" href="{% static 'img/arbol.ico' %}">
+    <title>Registro</title>
+</head>
+<body>
+  <br>
+  <br>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    
+    <a class="navbar-brand" href="#">
+      <img src="{% static 'img/arbol.ico' %}" width="30" height="30" alt="" href="{% url 'index' %}">
+    </a>
+
+    <a style=" text-align: center;color:aliceblue;" href="{% url 'index' %}">TuJardin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <script src="{% static 'js/script.js' %}"></script>
+        <li class="nav-item">
+              {% if user.is_authenticated %}
+
+              <a href="#">Bienvenid@ {{user.username}}</a></li>
+              <li class="nav-item">
+              <a href="{% url 'logout' %}" class="btn btn-outline-danger my-2 my-sm-0">Cerrar Sesión</a></li>
+          {% else %}
+              <li class="nav-item">
+              <a href="{% url 'login' %}" class="btn btn-outline-danger my-2 my-sm-0">Iniciar Sesión</a>
+          {% endif %}    </li>
+        <li class="nav-item " >
+          <a class="nav-link" href="{% url 'empresa' %}">Quiénes somos</a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link" href="{% url 'products' %}">Productos</a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link" href="{% url 'api' %}">Api</a>
+        </li>
+
+          
+
+      </ul>
+      <form class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search" style="border-radius: 15px; ">
+        <button class="btn btn-dark:hover my-2 my-sm-0" type="submit" style="background: rgb(0, 0, 0);border: none;color:rgb(255, 255, 255)">Buscar</button>
+      </form>
+    </div>
+  </nav>
+
+
+
+
+    <div class="container">
+        <form id="reg" action="{% url 'login' %}" class="col-lg-12" method="post"  >
+          <img class="mb-4" src="{% static 'img/arbol.ico' %}" alt="" width="70" height="70" style="text-align: center; ">
+          <label>Nombre:</label>
+          <input type="text" name="nombre"  class="form-control" required placeholder="Ingrese el nombre"  onfocus="CambiaColor(this)">
+          <br>
+          <label>Apellido:</label>
+          <input type="text" name="segnom"  class="form-control" required  placeholder="Ingrese el apellido" onfocus="CambiaColor(this)">
+          <br>
+          <label>Edad:</label>
+          <input type="number" max="100" name="edad"  class="form-control" required placeholder="..." min="18" onfocus="CambiaColor(this)">
+          <br>
+          <label>Telefono: </label>
+          <input type="number" name="fono" minlength="9" maxlength="9" required placeholder="964481006" onfocus="CambiaColor(this)" class="form-control">
+          <br>
+          <label>Fecha de nacimiento:</label>
+          <input type="date" name="fecha"  class="form-control" min="2006-01-01" placeholder="dd/mm/yyyy"  required onfocus="CambiaColor(this)">
+          <br>
+          <label>Email:</label>
+          <input type="text" name="email" class="form-control" required placeholder="Example@gmail.com" onfocus="CambiaColor(this)">
+          <br>
+          <label>Contraseña:</label>
+          <input type="password" id="password" name="password" minlength="9" class="form-control" placeholder="*********" onfocus="CambiaColor(this)">
+          <br>
+          <label>Reingresa contraseña: </label>
+          <input type="password" name="password2" minlength="9" class="form-control" placeholder="*********" onfocus="CambiaColor(this)"><br>
+          <br>
+          <input type="submit" class="btn btn-lg btn-outline-primary btn-block" value="Registrarse">
+          <br>
+          <div style="text-align: center;">
+            <a href="{% url 'login' %}">Iniciar Sesion</a>
+          </div>
+        </form>
+    </div>
+
+
+
+    <footer class="bg-transparent text-center text-lg-start">
+        <div class="container p-4">
+            <div class="row">
+            <div class="col-lg-6 col-md-12 mb-4 mb-md-0" style="text-align: center;padding-left: 5%">
+                <img src="{% static 'img/arbol.ico' %}" alt="" style="width: 20%;">
+            </div>
+            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                <div style="text-align: center;">
+                    <ul style="list-style:none; text-align: center;padding-left: 0%;">
+                        <li>
+                            <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'">Trabaja con nosotros</small>
+                        </li>
+                        <li>
+                            <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'">Términos y condiciones</small>
+                        </li>
+                        <li>
+                            <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'">Servicio al cliente</small>
+                        </li>
+                        <li> <td><img src="{% static 'img/instagram.svg' %}" onclick="location.href='https://www.instagram.com/'"></td>
+                          <td><img src="{% static 'img/facebook.svg' %}" onclick="location.href='https://www.facebook.com/'"></td>
+                          <td><img src="{% static 'img/twitter.svg' %}" onclick="location.href='https://www.twitter.com/'"></td></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgb(10, 253, 127);">
+            © 2022 Copyright: Eloi Espinaza
+            <a class="text-dark" href="{% url 'index' %}">TuJardin.cl</a>
+            </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% load static %}
+
+    <link href="{% static 'estilos/bootstrap.min.css' %}" type="text/css" rel="stylesheet"> 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+   
+    <script>
+        $(document).ready(function(){
+           $('#reg').validate({
+               rules: {
+                 name: {
+                    required: true,
+                    minlength: 3
+                 },
+                 
+                 password: {
+                    required: true,
+                    minlength: 8
+                 },
+                 password2: {
+                    required: true,
+                    minlength: 8,
+                    equalTo: "#password"
+                 },
+                 email: {
+                    required: true,
+                    email: true
+                 },
+               },
+               messages: {           
+                 name: {
+                    required: "Por favor ingresa un nombre",
+                    minlength: "Tu nombre debe ser tener 3 caracteres al menos"
+                 },
+                 password: {
+                    required: "Por favor ingresa una contraseña",
+                    minlength: "Tu contraseña debe ser de no menos de 8 caracteres"
+                 },
+                 password2: {
+                    required: "Ingresa un password",
+                    minlength: "Tu contraseña debe ser de no menos de 8 caracteres",
+                    equalTo: "Por favor ingresa la misma contraseña de arriba"
+                 },
+                 email: "Por favor ingresa un correo válido",
+               },
+             });
+         });
+       </script>
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'estilos/estilos.css' %}" >
+    <link rel="shortcut icon" href="{% static 'img/arbol.ico' %}">
+    <title>formulario de cliente</title>
+</head>
+<body>
+  <br>
+  <br>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">
+      <img src="{% static 'img/arbol.ico' %}" width="30" height="30" alt="" href="{% url 'index' %}">
+    </a>
+    <a style=" text-align: center;color:aliceblue;">TuJardin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="{% url 'empresa' %}">Quiénes somos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'products' %}">Productos</a>
+        </li>
+      </ul>
+      <form class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search" style="border-radius: 15px; ">
+        <button class="btn btn-dark:hover my-2 my-sm-0" type="submit" style="background: rgb(0, 0, 0);border: none;color:rgb(255, 255, 255)">Buscar</button>
+      </form>
+    </div>
+    </nav>
+
+
+
+    <div class="container">
+        <div class="row">
+            <h2>ingresando cliente</h2>
+        </div>
+
+            <div class="row">
+                <form method="POST" action="#" id="reg">
+                    {%csrf_token%}
+                    <div class="form-group">
+                        {{clientform.email.label}}
+                        {{clientform.email}}
+                    </div>
+     
+                    <div class="form-group">
+                        {{clientform.nom.label}}
+                        {{clientform.nom}}
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-md">
+                            <input type="submit" class="btn btn-danger" id="enviar" value="Enviar">
+                            <input type="reset" class="btn btn-primary" id="limpiar" value="Limpiar">
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+
+
+
+
+    <footer class="bg-transparent text-center text-lg-start">
+    <div class="container p-4">
+        <div class="row">
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0" style="text-align: center;padding-left: 5%">
+            <img src="{% static 'img/arbol.ico' %}" alt="" style="width: 20%;">
+        </div>
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <div style="text-align: center;">
+                <ul style="list-style:none; text-align: center;padding-left: 0%;">
+                    <li>
+                        <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'">Trabaja con nosotros</small>
+                    </li>
+                    <li>
+                        <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'">Términos y condiciones</small>
+                    </li>
+                    <li>
+                        <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'">Servicio al cliente</small>
+                    </li>
+                    <li> <td><img src="{% static 'img/instagram.svg' %}" onclick="location.href='https://www.instagram.com/'"></td>
+                      <td><img src="{% static 'img/facebook.svg' %}" onclick="location.href='https://www.facebook.com/'"></td>
+                      <td><img src="{% static 'img/twitter.svg' %}" onclick="location.href='https://www.twitter.com/'"></td></li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="text-center p-3" style="background-color: rgb(10, 253, 127);">
+        © 2022 Copyright: Eloi Espinaza
+        <a class="text-dark" href="{% url 'index' %}">TuJardin.cl</a>
+        </div>
+    </footer>
+
+
+
+</body>
+</html>

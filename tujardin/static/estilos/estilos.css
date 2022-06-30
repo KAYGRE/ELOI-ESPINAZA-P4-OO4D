@@ -1,0 +1,84 @@
+.fondo{
+    background-color: blue;
+} 
+
+.color{
+    color: white;
+}
+
+.error-control {
+    border: 1px solid red;
+}
+
+label.error {
+    color: red;
+    width: 300px;
+    font-size: 0.8em;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+
+#caja{
+    width: 300px;
+    border: 15px solid rgb(65, 182, 63);
+    padding: 20px;
+    margin: 20px;
+}
+
+body {
+    font-family: "Ubuntu", sans-serif;
+  }
+  
+#tarjeta {
+    border: none;
+}
+
+#seep {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+#name {
+    border-radius: 15px;
+    color: rgb(58, 58, 58);
+}
+
+#imag {
+    height: 250px;
+    width: fit-content;
+}
+
+#descriptions li:before{
+    content:"\2713\0020";
+}
+
+#inputs {
+    border-radius: 15px;
+}
+
+#email {
+    border-radius: 15px;
+}
+
+#password {
+    border-radius: 20px;
+}
+
+#password2 {
+    border-radius: 20px;
+}
+
+
+#itemCheck {
+    color: rgba(0, 240, 8, 0.541);
+    font-size: 250%;
+    width: 13%;
+    margin: 10%;
+    font-weight: bold;
+}
+
+#bars {
+    background-color: rgb(255, 255, 255);
+}
+

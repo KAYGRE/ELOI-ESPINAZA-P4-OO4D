@@ -1,0 +1,390 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% load static %}
+
+    <link href="{% static 'estilos/bootstrap.min.css' %}" type="text/css" rel="stylesheet"> 
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+    <link rel="stylesheet" type="text/css" href="{% static 'estilos/estilos.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/arbol.ico' %}">
+    <title>Nuestros Productos</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'img/arbol.ico' %}" width="30" height="30" alt="" href="{% url 'index' %}">
+      </a>
+      <a style=" text-align: center;color:aliceblue;" href="{% url 'index' %}">TuJardin</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              {% if user.is_authenticated %}
+
+              <a href="#">Bienvenid@ {{user.username}}</a></li>
+              <li class="nav-item">
+              <a href="{% url 'logout' %}" class="btn btn-outline-danger my-2 my-sm-0">Cerrar Sesión</a></li>
+          {% else %}
+              <li class="nav-item">
+              <a href="{% url 'login' %}" class="btn btn-outline-danger my-2 my-sm-0">Iniciar Sesión</a>
+          {% endif %}    </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'empresa' %}">Quiénes somos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'products' %}">Productos</a>
+          </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search" style="border-radius: 15px; ">
+          <button class="btn btn-dark:hover my-2 my-sm-0" type="submit" style="background: rgb(0, 0, 0);border: none;color:rgb(255, 255, 255)">Buscar</button>
+        </form>
+      </div>
+    </nav>
+  <br>
+  <br>
+  <br>
+
+
+  <table>
+    <tr>
+    <td style="width: 6%;">
+    </td>
+    <td style="width: 3%;">
+    </td>
+    <td>
+      <div class="card-deck" >
+        <div class="card" id="tarjeta">
+            <div style="text-align: center;">
+                <img class="card-img-top center" src="{% static 'img/Rastrillo Barre Hoja 15 Dientes Con Mango Aluminio.webp' %}" alt="Card image cap"id="imag" style="align-content: center;">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Barre Hoja 15 Dientes Con Mango Aluminio</h5>
+            </div>
+            <div class="card-footer bg-transparent" style="border: none;">
+                <h5> $ 3.990</h5>
+                <h6 class="text-muted" style="text-decoration:line-through;"> $ 4.990</h6>
+            </div>
+            <div class="card-footer"  style=" border-radius: 15px;border: none;">
+                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">✔    </small>
+                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">    ✘</small>
+            </div>
+            <div class="card-footer"  style="background-color:transparent;border: none;">
+            </div>
+        </div>
+        <div class="card" id="tarjeta">
+            <div style="text-align: center;">
+                <img class="card-img-top center" src="{% static 'img/Pala Punta De Huevo Mango Metálico Lioi.webp' %}" alt="Card image cap"id="imag" style="align-content: center;">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Pala Punta De Huevo Mango Metálico Lioi</h5>
+            </div>
+            <div class="card-footer bg-transparent" style="border: none;">
+                <h5> $ 7.990</h5>
+                <h6 class="text-muted" style="text-decoration:line-through;"> $ 8.990</h6>
+            </div>
+            <div class="card-footer" style="border-radius: 15px;border: none;">
+                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">✔    </small>
+                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">    ✘</small>
+            </div>
+            <div class="card-footer"  style="background-color:transparent;border: none;">
+            </div>
+        </div>
+        <div class="card" id="tarjeta">
+            <div style="text-align: center;">
+                <img class="card-img-top center" src="{% static 'img/Set Herramientas Jardín 4 Piezas 6 Jj-4 Truper.webp' %}" alt="Card image cap"id="imag" style="align-content: center;">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Set Herramientas Jardín 4 Piezas 6 Jj-4 Truper</h5>
+            </div>
+            <div class="card-footer bg-transparent" style="border: none;">
+                <h5> $ 5.990</h5>
+                <h6 class="text-muted" style="text-decoration:line-through;"> <br></h6>
+            </div>
+            <div class="card-footer" style="border-radius: 15px;border: none;">
+                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">✔    </small>
+                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">    ✘</small>
+            </div>
+            <div class="card-footer"  style="background-color:transparent;border: none;">
+            </div>
+        </div>
+        <div class="card" id="tarjeta">
+            <div style="text-align: center;">
+                <img class="card-img-top center" src="{% static 'img/orilladora eléctrica de 500w - 220v.webp' %}" alt="Card image cap"id="imag" style="align-content: center;">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Orilladora eléctrica de 500w - 220v </h5>
+            </div>
+            <div class="card-footer bg-transparent" style="border: none;">
+                <h5> $ 37.990</h5>
+                <h6 class="text-muted" style="text-decoration:line-through;"> <br></h6>
+            </div>
+            <div class="card-footer" style="border-radius: 15px;border: none;">
+                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">✔    </small>
+                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">    ✘</small>
+            </div>
+            <div class="card-footer"  style="background-color:transparent;border: none;">
+            </div>
+        </div>
+      </div>
+    </td>
+    <td style="width: 3%;">
+    </td>
+    <td style="width: 6%;">
+    </td>
+    </tr>   
+    </table>
+    <table>
+      <tr>
+      <td style="width: 6%;">
+      </td>
+      <td style="width: 3%;">
+      </td>
+      <td>
+        <div class="card-deck" >
+          <div class="card" id="tarjeta">
+              <div style="text-align: center;">
+                  <img class="card-img-top center" src="{% static 'img/Soplador De Aire Eléctrico Operado A Mano 500w _ 220v 70505.webp' %}" alt="Card image cap"id="imag" style="align-content: center;">
+              </div>
+              <div class="card-body">
+                  <h5 class="card-title">Soplador De Aire Eléctrico Operado A Mano 500w / 220v</h5>
+              </div>
+              <div class="card-footer bg-transparent" style="border: none;">
+                  <h5> $ 7.990</h5>
+                  <h6 class="text-muted" style="text-decoration:line-through;"> $ 8.990</h6>
+              </div>
+              <div class="card-footer" style="border-radius: 15px;border: none;">
+                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">✔    </small>
+                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">    ✘</small>
+              </div>
+              <div class="card-footer"  style="background-color:transparent;border: none;">
+              </div>
+          </div>
+          <div class="card" id="tarjeta">
+              <div style="text-align: center;">
+                  <img class="card-img-top center" src="{% static 'img/Set Herramientas Suculentas 14 Accesorios.webp' %}" alt="Card image cap"id="imag" style="align-content: center;">
+              </div>
+              <div class="card-body">
+                  <h5 class="card-title">Set Herramientas Suculentas 14 Accesorios</h5>
+              </div>
+              <div class="card-footer bg-transparent" style="border: none;">
+                  <h5> $ 6.990</h5>
+                  <h6 class="text-muted" style="text-decoration:line-through;"> $ 7.990</h6>
+              </div>
+              <div class="card-footer" style="border-radius: 15px;border: none;">
+                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">✔    </small>
+                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">    ✘</small>
+              </div>
+              <div class="card-footer"  style="background-color:transparent;border: none;">
+              </div>
+          </div>
+          <div class="card" id="tarjeta">
+              <div style="text-align: center;">
+                  <img class="card-img-top center" src="{% static 'img/Ficus Lyrata, Gomero Pera.webp' %}" alt="Card image cap"id="imag" style="align-content: center;">
+              </div>
+              <div class="card-body">
+                  <h5 class="card-title">Ficus Lyrata, Gomero Pera</h5>
+              </div>
+              <div class="card-footer bg-transparent" style="border: none;">
+                  <h5> $ 7.990</h5>
+                  <h6 class="text-muted" style="text-decoration:line-through;"> $ 8.990</h6>
+              </div>
+              <div class="card-footer" style="border-radius: 15px;border: none;">
+                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">✔    </small>
+                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">    ✘</small>
+              </div>
+              <div class="card-footer"  style="background-color:transparent;border: none;">
+              </div>
+          </div>
+          <div class="card" id="tarjeta">
+              <div style="text-align: center;">
+                  <img class="card-img-top center" src="{% static 'img/Planta Decorativa Artificial Suculenta Aloe Vera Mini 18cm.webp' %}" alt="Card image cap"id="imag" style="align-content: center;">
+              </div>
+              <div class="card-body">
+                  <h5 class="card-title">Planta Decorativa Artificial Suculenta Aloe Vera Mini 18cm</h5>
+              </div>
+              <div class="card-footer bg-transparent" style="border: none;">
+                  <h5> $ 10.990</h5>
+                  <h6 class="text-muted" style="text-decoration:line-through;"> $ 15.990</h6>
+              </div>
+              <div class="card-footer" style="border-radius: 15px;border: none;">
+                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">✔    </small>
+                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">    ✘</small>
+              </div>
+              <div class="card-footer"  style="background-color:transparent;border: none;">
+              </div>
+          </div>
+        </div>
+      </td>
+      <td style="width: 3%;">
+      </td>
+      <td style="width: 6%;">
+      </td>
+      </tr>   
+      </table>
+      <table>
+        <tr>
+        <td style="width: 6%;">
+        </td>
+        <td style="width: 3%;">
+        </td>
+        <td>
+          <div class="card-deck" >
+            <div class="card" id="tarjeta">
+                <div style="text-align: center;">
+                    <img class="card-img-top center" src="{% static 'img/Planta Decorativa Artificial Suculenta Cactus Flores 16cm.webp' %}" alt="Card image cap"id="imag" style="align-content: center;">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Planta Decorativa Artificial Suculenta Cactus Flores 16cm</h5>
+                </div>
+                <div class="card-footer bg-transparent" style="border: none;">
+                    <h5> $ 27.990</h5>
+                    <h6 class="text-muted" style="text-decoration:line-through;"> $ 28.990</h6>
+                </div>
+                <div class="card-footer" style="border-radius: 15px;border: none;">
+                    <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">✔    </small>
+                    <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">    ✘</small>
+                </div>
+                <div class="card-footer"  style="background-color:transparent;border: none;">
+                </div>
+            </div>
+            <div class="card" id="tarjeta">
+                <div style="text-align: center;">
+                    <img class="card-img-top center" src="{% static 'img/Planta Decorativa Bambú 122 Cm.webp' %}" alt="Card image cap"id="imag" style="align-content: center;">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Planta Decorativa Bambú 122 Cm</h5>
+                </div>
+                <div class="card-footer bg-transparent" style="border: none;">
+                    <h5> $ 17.990</h5>
+                    <h6 class="text-muted" style="text-decoration:line-through;"> <br></h6>
+                </div>
+                <div class="card-footer" style="border-radius: 15px;border: none;">
+                    <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">✔    </small>
+                    <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">    ✘</small>
+                </div>
+                <div class="card-footer"  style="background-color:transparent;border: none;">
+                </div>
+            </div>
+            <div class="card" id="tarjeta">
+                <div style="text-align: center;">
+                    <img class="card-img-top center" src="{% static 'img/Planta Decorativa Ficus 150 Cm.webp' %}" alt="Card image cap"id="imag" style="align-content: center;">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Planta Decorativa Ficus 150 Cm</h5>
+                </div>
+                <div class="card-footer bg-transparent" style="border: none;">
+                    <h5> $ 27.990</h5>
+                    <h6 class="text-muted" style="text-decoration:line-through;"> $ 29.990</h6>
+                </div>
+                <div class="card-footer" style="border-radius: 15px;border: none;">
+                    <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">✔    </small>
+                    <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">    ✘</small>
+                </div>
+                <div class="card-footer"  style="background-color:transparent;border: none;">
+                </div>
+            </div>
+            <div class="card" id="tarjeta">
+                <div style="text-align: center;">
+                    <img class="card-img-top center" src="{% static 'img/Tierra De Hoja Saco De 40 Litros (25 Killos).webp' %}" alt="Card image cap"id="imag" style="align-content: center;">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Tierra De Hoja Saco De 40 Litros (25 Killos)</h5>
+                </div>
+                <div class="card-footer bg-transparent" style="border: none;">
+                    <h5> $ 7.990</h5>
+                    <h6 class="text-muted" style="text-decoration:line-through;"> $ 8.990</h6>
+                </div>
+                <div class="card-footer" style="border-radius: 15px;border: none;">
+                    <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">✔    </small>
+                    <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'" style="color: rgb(59, 92, 255);font-size: 140%;">    ✘</small>
+                </div>
+                <div class="card-footer"  style="background-color:transparent;border: none;">
+                </div>
+            </div>
+          </div>
+        </td>
+        <td style="width: 3%;">
+        </td>
+        <td style="width: 6%;">
+        </td>
+        </tr>   
+        </table>
+          <div class="container">   
+            <div class="jumbotron ">
+            <table>
+                <tr>
+                <td><img src="{% static 'img/bus.ico' %}" style="width: fit-content;height: 60px; padding-right: 5%"></td>
+                <td><h4 style="padding-left: 9%;">  Envios a todo Chile</h4></td>
+                </tr>
+                </table>
+                <br>
+                <br>
+                <table>
+                <tr>
+                <td><img src="{% static 'img/premiun.ico' %}" style="width: fit-content;height: 50px;"></td>
+                <td><h4 style="padding-left: 10%;">Productos de alta calidad</h4></td>
+                </tr>
+                </table>
+                <br>
+                <br>
+                <table>
+                <tr>
+                <td><img src="{% static 'img/phone.ico' %}"style="width: fit-content;height: 50px;"></td>
+                <td><h4 style="padding-left: 10%;">Atención online las 24hrs</h4></td>
+                </tr>
+                </table>
+            </div>
+            </div>
+        </div>
+
+        
+        <div class="container">   
+          <div class="jumbotron ">
+            <h1>Regístrate Ya!!</h1> 
+            <p>El registro de nuevos usuarios dara descuentos por una semana, registrar y seguir tus compras y calificar los productos</p>
+            <a type="button" href="{% url 'register' %}" class="btn btn-primary">Registrarse</a>      
+          </div>
+        </div>
+
+
+
+        <footer class="bg-transparent text-center text-lg-start">
+            <div class="container p-4">
+                <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0" style="text-align: center;padding-left: 5%">
+                    <img src="{% static 'img/arbol.ico' %}" alt="" style="width: 20%;">
+                </div>
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <div style="text-align: center;">
+                        <ul style="list-style:none; text-align: center;padding-left: 0%;">
+                            <li>
+                                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'">Trabaja con nosotros</small>
+                            </li>
+                            <li>
+                                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'">Términos y condiciones</small>
+                            </li>
+                            <li>
+                                <small onmouseover="style.color = 'green'" onmouseout="style.color= 'black'">Servicio al cliente</small>
+                            </li>
+                            <li> <td><img src="{% static 'img/instagram.svg' %}" onclick="location.href='https://www.instagram.com/'"></td>
+                              <td><img src="{% static 'img/facebook.svg' %}" onclick="location.href='https://www.facebook.com/'"></td>
+                              <td><img src="{% static 'img/twitter.svg' %}" onclick="location.href='https://www.twitter.com/'"></td></li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="text-center p-3" style="background-color: rgb(10, 253, 127);">
+                © 2022 Copyright: Eloi Espinaza
+                <a class="text-dark" href="{% url 'index' %}">TuJardin.cl</a>
+                </div>
+        </footer>
+</body>
+</html>
